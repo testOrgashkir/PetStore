@@ -5,11 +5,11 @@ pipeline {
       steps {
         parallel(
           "Test": {
-            build 'stage1'
+            build 'freestyle'
             
           },
           "QA": {
-            build 'stage2'
+            build 'dummy'
             
           }
         )
