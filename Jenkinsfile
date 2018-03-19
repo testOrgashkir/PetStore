@@ -2,17 +2,19 @@ pipeline {
   agent any
   stages {
     stage('Test') {
-      steps {
-        parallel(
-          "Test": {
+      parallel {
+        stage('Test') {
+          steps {
             build 'freestyle'
-            
-          },
-          "QA": {
-            build 'dummy'
-            
           }
-        )
+        }
+        stage('QA') {
+          steps {
+            build 'dummy'
+            sleep 10
+            powershell 'Start-Sleep -s 10'
+          }
+        }
       }
     }
   }
