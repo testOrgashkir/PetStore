@@ -4,8 +4,9 @@
 # https://aka.ms/yaml
 
 trigger: 
-  exclude:
-  - master
+  branches:
+    exclude:
+    - master
 
 pool:
   vmImage: 'Ubuntu 16.04'
