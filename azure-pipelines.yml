@@ -10,6 +10,7 @@ jobs:
   variables: 
     group: DevRunSettings
   steps:
+  - checkout: none
   - script: echo value from script is $(Key1)
 
 
