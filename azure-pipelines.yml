@@ -19,4 +19,4 @@ jobs:
     - group: QARunSettings
 
   steps:
-  - script: "echo $(Key1)"
+  - script: echo $(Key1)
