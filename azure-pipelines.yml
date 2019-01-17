@@ -7,7 +7,9 @@ trigger: none
 
 jobs:
 - job: Deploy
+  variables: 
+    group: DevRunSettings
   steps:
-  - script: echo hello from Windows
+  - script: echo value from script is $(Key1)
 
 
