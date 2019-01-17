@@ -19,4 +19,4 @@ jobs:
   - group: QARunSettings
   steps:
   - checkout: none
-  - script: echo value from script is $(Key2)
+  - script: echo value from script is $(Key1)
