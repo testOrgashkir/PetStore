@@ -8,7 +8,7 @@ jobs:
 - job: DeployDev  
 
   variables:
-    - group: DevRunSettings
+    group: DevRunSettings
 
   steps:
   - checkout: none
