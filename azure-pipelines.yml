@@ -8,29 +8,11 @@ trigger: none
 
 jobs:
 - job: DevDeploy
-  condition: eq(variables['env'],'Dev')
   variables: 
     group: DevRunSettings
-
-  pool:
-  vmImage: 'Ubuntu 16.04'
   steps:
   - checkout: none
   - script: |
-    echo Env value is: $(env)
-    echo Key value is: $(Key1)
-  displayName: 'Run a multi-line script1'
+    echo Env value is $(env)
+    echo Key value is $(Key1)
 
-- job: DevDeploy
-  condition: eq(variables['env'],'QA')
-  variables: 
-    group: QARunSettings
-  
-  pool:
-  vmImage: 'Ubuntu 16.04'
-  steps:
-  - checkout: none
-  - script: |
-    echo Env value is: $(env)
-    echo Key value is: $(Key1)
-  displayName: 'Run a multi-line script1'
