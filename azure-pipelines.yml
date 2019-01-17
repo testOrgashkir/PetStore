@@ -4,20 +4,19 @@
 # https://aka.ms/yaml
 
 trigger: none
+
 jobs:
-- job: DeployDev  
-
-  variables:
-    group: DevRunSettings
-
+- job: DeployDev
+  variables: 
+  - group: DevRunSettings
   steps:
   - checkout: none
-  - script: "echo $(Key1)"
+  - script: echo value from script is $(Key1)
 
-- job: DeployQA 
-
-  variables:
-    - group: QARunSettings
-
+- job: DeployQA
+  dependsOn: DeployDev
+  variables: 
+  - group: QARunSettings
   steps:
-  - script: echo $(Key1)
+  - checkout: none
+  - script: echo value from script is $(Key2)
