@@ -16,5 +16,5 @@ steps:
 - script: |
     echo Env value is: $(env)
     echo Key value is: $(dev.Key)
-    echo nested key value is: $($(env).Key)
+    echo nested key value is: $(key)
   displayName: 'Run a multi-line script1'
