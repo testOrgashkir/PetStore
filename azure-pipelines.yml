@@ -6,9 +6,16 @@
 trigger: none
 
 jobs:
-- job: Deploy
+- job: DeployDev
   variables: 
     group: DevRunSettings
+  steps:
+  - checkout: none
+  - script: echo value from script is $(Key1)
+
+- job: DeployQA
+  variables: 
+    group: QARunSettings
   steps:
   - checkout: none
   - script: echo value from script is $(Key1)
