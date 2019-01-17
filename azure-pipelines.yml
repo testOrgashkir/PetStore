@@ -10,6 +10,9 @@ trigger:
     exclude:
     - releases/*
 
+variables: 
+  group: RunSettings
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
@@ -18,6 +21,7 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+    echo Env value is: $(env)
+    echo key value is: $(dev.Key)
+    echo nested key value is: $($(env)Key)
   displayName: 'Run a multi-line script1'
