@@ -11,6 +11,7 @@ jobs:
     - group: DevRunSettings
 
   steps:
+  - checkout: none
   - script: "echo $(Key1)"
 
 - job: DeployQA 
