@@ -5,14 +5,15 @@
 
 trigger: none
 
-pool:
-  vmImage: 'Ubuntu 16.04'
 
 jobs:
 - job: DevDeploy
   condition: eq(variables['env'],'Dev')
   variables: 
     group: DevRunSettings
+
+  pool:
+  vmImage: 'Ubuntu 16.04'
   steps:
   - checkout: none
   - script: |
@@ -24,6 +25,9 @@ jobs:
   condition: eq(variables['env'],'QA')
   variables: 
     group: QARunSettings
+  
+  pool:
+  vmImage: 'Ubuntu 16.04'
   steps:
   - checkout: none
   - script: |
