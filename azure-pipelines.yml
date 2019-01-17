@@ -5,16 +5,28 @@
 
 trigger: none
 
-variables: 
-  group: RunSettings
-
 pool:
   vmImage: 'Ubuntu 16.04'
 
-steps:
-- checkout: none
-- script: |
+jobs:
+- job: DevDeploy
+  condition: eq(variables['env'],'Dev')
+  variables: 
+    group: DevRunSettings
+  steps:
+  - checkout: none
+  - script: |
     echo Env value is: $(env)
-    echo Key value is: $(dev.Key)
-    echo nested key value is: $(key)
+    echo Key value is: $(Key1)
+  displayName: 'Run a multi-line script1'
+
+- job: DevDeploy
+  condition: eq(variables['env'],'QA')
+  variables: 
+    group: QARunSettings
+  steps:
+  - checkout: none
+  - script: |
+    echo Env value is: $(env)
+    echo Key value is: $(Key1)
   displayName: 'Run a multi-line script1'
