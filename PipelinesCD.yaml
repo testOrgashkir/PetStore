@@ -1,1 +1,24 @@
-Foobar
+
+resources:
+  pipelines:
+    pipeline: MyCI
+    source: CI
+    trigger:
+      branch:
+      - master
+
+jobs:
+- job: DeployDev
+  variables: 
+  - group: DevRunSettings
+  steps:
+  - checkout: none
+  - script: echo value from script is $(Key1)
+
+- job: DeployQA
+  dependsOn: DeployDev
+  variables: 
+  - group: QARunSettings
+  steps:
+  - checkout: none
+  - script: echo value from script is $(Key1) foobar
