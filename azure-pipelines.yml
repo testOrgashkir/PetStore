@@ -71,7 +71,7 @@ stages:
                   ls $(Pipeline.Workspace)/Artifact2/
                   ls $(Pipeline.Workspace)/Artifact3/
   - deployment: Deploy2
-    displayName: partial download
+    displayName: Partial download
     pool: hosted
     environment: Environment01
     strategy:
@@ -81,7 +81,7 @@ stages:
               - download: current
                 patterns: '**/*.nupkg'
                 path: $(Pipeline.Workspace)/
-                displayName: Partial Download
+                displayName: Nuget download
               - powershell: |
                   ls $(Pipeline.Workspace)/
 
