@@ -27,7 +27,7 @@ stages:
         ArtifactName: Artifact1
         targetPath: '$(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg'
 
-    - upload: $(System.defaultWorkingDirectory)/temp/*.nupkg
+    - upload: $(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg
       artifact: Artifact2
     #  artifact: Extension
   - job: NoArtifactJob
