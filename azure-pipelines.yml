@@ -25,17 +25,19 @@ stages:
       displayName: Create Artifact
       inputs:
         ArtifactName: Artifact1
-        targetPath: '**'
+        targetPath: '$(System.defaultWorkingDirectory)/temp/*.nupkg'
 
     #- upload: BVT\Extension
     #  artifact: Extension
   - job: NoArtifactJob
     pool: Hosted
+    dependsOn: Build
     steps:
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
 
   - job: DownloadAllArtifactJob
     pool: Hosted
+    dependsOn: Build
     steps:
       - download: current
       - powershell: |
