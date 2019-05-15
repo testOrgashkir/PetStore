@@ -29,6 +29,8 @@ stages:
 
     - upload: $(System.defaultWorkingDirectory)/temp/Jenkinsfile
       artifact: Artifact2
+    - upload: $(System.defaultWorkingDirectory)/temp/PipelinesCD.yaml
+      artifact: Artifact2
 
     - task: PublishBuildArtifacts@1
       displayName: Create FCS Artifact
