@@ -18,7 +18,7 @@ stages:
       displayName: 'Run a one-line script'
     - task: CopyFiles@2
       inputs:
-        SourceFolder: '$(Pipeline.Workspace)'
+        SourceFolder: '$(Pipeline.Workspace)/s'
         Contents: '**'
         TarGetFoLDer: '$(System.defaultWorkingDirectory)/temp'
     - task: PublishPipelineArtifact@0
