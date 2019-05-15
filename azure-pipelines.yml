@@ -4,18 +4,67 @@
 # https://aka.ms/yaml
 
 
-jobs:
-- job: DeployDev
-  variables: 
-  - group: DevRunSettings
-  steps:
-  - checkout: none
-  - script: echo value from script is $(Key1)
+#trigger: none
 
-- job: DeployQA
-  dependsOn: DeployDev
-  variables: 
-  - group: QARunSettings
-  steps:
-  - checkout: none
-  - script: echo value from script is $(Key1) foobar
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:  
+  - job: Build
+    displayName: Build job
+    pool: Hosted
+    steps:
+    - script: echo Hello, world! This is CI job
+      displayName: 'Run a one-line script'
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Pipeline.Workspace)'
+        Contents: '**'
+        TarGetFoLDer: '$(System.defaultWorkingDirectory)/temp'
+    - task: PublishPipelineArtifact@0
+      displayName: Create Artifact
+      inputs:
+        ArtifactName: Artifact1
+        targetPath: '**/*.nupkg'
+
+    #- upload: BVT\Extension
+    #  artifact: Extension
+  - job: NoArtifactJob
+    pool: Hosted
+    steps:
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+
+  - job: DownloadAllArtifactJob
+    pool: Hosted
+    steps:
+      - download: current
+      - powershell: |
+          ls $(Pipeline.Workspace)/
+          ls $(Pipeline.Workspace)/Artifact1
+
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:  
+  - deployment: Deploy1
+    displayName: Download All Artifacts
+    pool: hosted
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - powershell: |
+                  ls $(Pipeline.Workspace)/
+                  ls $(Pipeline.Workspace)/Artifact1/
+  - deployment: Deploy2
+    displayName: No download
+    pool: hosted
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - powershell: |
+                  ls $(Pipeline.Workspace)/
+                  ls $(Pipeline.Workspace)/Artifact1/
+
