@@ -39,6 +39,7 @@ stages:
     pool: Hosted
     dependsOn: Build
     steps:
+      - checkout: none
       - download: current
       - powershell: |
           ls $(Pipeline.Workspace)/
@@ -66,6 +67,7 @@ stages:
         runOnce:
           deploy:
             steps:
+              - download: none
               - powershell: |
                   ls $(Pipeline.Workspace)/
                   ls $(Pipeline.Workspace)/Artifact1/
