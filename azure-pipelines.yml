@@ -27,10 +27,9 @@ stages:
         artifactName: Artifact1
         targetPath: '$(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg'
 
-    - upload: $(System.defaultWorkingDirectory)/temp/Jenkinsfile
+    - upload: $(System.defaultWorkingDirectory)/temp/*
       artifact: Artifact2
-    - upload: $(System.defaultWorkingDirectory)/temp/PipelinesCD.yaml
-      artifact: Artifact2
+
 
     - task: PublishBuildArtifacts@1
       displayName: Create FCS Artifact
