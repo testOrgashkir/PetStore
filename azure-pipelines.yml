@@ -25,7 +25,7 @@ stages:
       displayName: Create Artifact
       inputs:
         ArtifactName: Artifact1
-        targetPath: '$(System.defaultWorkingDirectory)/temp/*.nupkg'
+        targetPath: '$(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg'
 
     #- upload: BVT\Extension
     #  artifact: Extension
