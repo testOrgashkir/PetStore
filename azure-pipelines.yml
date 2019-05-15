@@ -28,7 +28,6 @@ stages:
         targetPath: '$(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg'
 
     - upload: $(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg
-      displayName: Upload Artifact
       artifact: Artifact2
 
     - task: PublishBuildArtifacts@1
@@ -36,6 +35,7 @@ stages:
       inputs:
         artifactName: Artifact3
         pathToPublish: $(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg
+
     #  artifact: Extension
   - job: NoArtifactJob
     pool: Hosted
