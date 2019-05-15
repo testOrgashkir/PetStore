@@ -70,5 +70,4 @@ stages:
               - download: none
               - powershell: |
                   ls $(Pipeline.Workspace)/
-                  ls $(Pipeline.Workspace)/Artifact1/
 
