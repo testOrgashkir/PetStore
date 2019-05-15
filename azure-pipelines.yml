@@ -52,7 +52,7 @@ stages:
         artifact: Artifact3
       - powershell: |
           ls $(Pipeline.Workspace)/
-          ls $(Pipeline.Workspace)/Artifact1
+          ls $(Pipeline.Workspace)/Artifact3
 
 - stage: Deploy
   displayName: Deploy stage
@@ -68,6 +68,8 @@ stages:
               - powershell: |
                   ls $(Pipeline.Workspace)/
                   ls $(Pipeline.Workspace)/Artifact1/
+                  ls $(Pipeline.Workspace)/Artifact2/
+                  ls $(Pipeline.Workspace)/Artifact3/
   - deployment: Deploy2
     displayName: partial download
     pool: hosted
