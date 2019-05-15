@@ -24,17 +24,17 @@ stages:
     - task: PublishPipelineArtifact@0
       displayName: Pipeline Artifact
       inputs:
-        ArtifactName: Artifact1
+        artifactName: Artifact1
         targetPath: '$(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg'
 
-    - upload: $(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg
+    - upload: $(System.defaultWorkingDirectory)/temp/Jenkinsfile
       artifact: Artifact2
 
     - task: PublishBuildArtifacts@1
       displayName: Create FCS Artifact
       inputs:
         artifactName: Artifact3
-        pathToPublish: $(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg
+        pathToPublish: $(System.defaultWorkingDirectory)/temp/PipelinesCD.yaml
 
     #  artifact: Extension
   - job: NoArtifactJob
@@ -49,6 +49,7 @@ stages:
     steps:
       - checkout: none
       - download: current
+        artifact: Artifact3
       - powershell: |
           ls $(Pipeline.Workspace)/
           ls $(Pipeline.Workspace)/Artifact1
@@ -68,14 +69,15 @@ stages:
                   ls $(Pipeline.Workspace)/
                   ls $(Pipeline.Workspace)/Artifact1/
   - deployment: Deploy2
-    displayName: No download
+    displayName: partial download
     pool: hosted
     environment: Environment01
     strategy:
         runOnce:
           deploy:
             steps:
-              - download: none
+              - download: current
+                patterns: '**/*.nupkg'
               - powershell: |
                   ls $(Pipeline.Workspace)/
 
