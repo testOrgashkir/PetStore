@@ -80,6 +80,7 @@ stages:
             steps:
               - download: current
                 patterns: '**/*.nupkg'
+                path: $(Pipeline.Workspace)/
               - powershell: |
                   ls $(Pipeline.Workspace)/
 
