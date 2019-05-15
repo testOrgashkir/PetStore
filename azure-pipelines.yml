@@ -22,13 +22,20 @@ stages:
         Contents: '**'
         TarGetFoLDer: '$(System.defaultWorkingDirectory)/temp'
     - task: PublishPipelineArtifact@0
-      displayName: Create Artifact
+      displayName: Pipeline Artifact
       inputs:
         ArtifactName: Artifact1
         targetPath: '$(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg'
 
     - upload: $(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg
+      displayName: Upload Artifact
       artifact: Artifact2
+
+    - task: PublishBuildArtifacts@1
+      displayName: Create FCS Artifact
+      inputs:
+        artifactName: Artifact3
+        pathToPublish: $(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg
     #  artifact: Extension
   - job: NoArtifactJob
     pool: Hosted
