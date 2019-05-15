@@ -81,6 +81,7 @@ stages:
               - download: current
                 patterns: '**/*.nupkg'
                 path: $(Pipeline.Workspace)/
+                displayName: Partial Download
               - powershell: |
                   ls $(Pipeline.Workspace)/
 
