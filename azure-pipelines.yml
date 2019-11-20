@@ -81,7 +81,6 @@ stages:
             steps:
               - download: current
                 patterns: '**/*.nupkg'
-                path: $(Pipeline.Workspace)/
                 displayName: Nuget download
               - powershell: |
                   ls $(Pipeline.Workspace)/
