@@ -23,6 +23,7 @@ stages:
         action: 'create'
         target: '$(Build.SourceVersion)'
         tagSource: 'gitTag'
+        tagPattern: '*'
         title: 'Test_$(Build.SourceVersion)'
         changeLogCompareToRelease: 'lastFullRelease'
         changeLogType: 'commitBased'
