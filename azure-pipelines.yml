@@ -16,6 +16,16 @@ stages:
     steps:
     - script: echo Hello, world! This is CI job
       displayName: 'Run a one-line script'
+    - task: GitHubRelease@1
+      inputs:
+        gitHubConnection: 'ashokirla'
+        repositoryName: '$(Build.Repository.Name)'
+        action: 'create'
+        target: '$(Build.SourceVersion)'
+        tagSource: 'gitTag'
+        title: 'Test_$(Build.SourceVersion)'
+        changeLogCompareToRelease: 'lastFullRelease'
+        changeLogType: 'commitBased'
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Pipeline.Workspace)/s'
