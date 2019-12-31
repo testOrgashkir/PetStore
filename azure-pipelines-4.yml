@@ -14,6 +14,13 @@ resources:
       - master
 
 stages:
+  - stage: Build
+    jobs:
+    - job: Build
+      pool: hosted
+      steps:
+      - publish: $(Pipeline.Workspace)/
+        artifact: DBTier
   - stage: Deploy
     jobs:
     - deployment: WebDeployment
@@ -25,3 +32,11 @@ stages:
           steps:
             - download: SmartHotel
               artifact: webTier
+    - deployment: DBDeployment
+      pool: hosted
+      environment: SmartHotelProd
+      strategy:
+       runOnce:
+         deploy:
+          steps:
+            - download: current
