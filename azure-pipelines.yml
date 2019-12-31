@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 
-#trigger: none
+
 
 stages:
 - stage: Build
@@ -14,85 +14,6 @@ stages:
     displayName: Build job
     pool: Hosted
     steps:
-    - script: echo Hello, world! This is CI job
-      displayName: 'Run a one-line script'
-    - task: GitHubRelease@1
-      inputs:
-        gitHubConnection: 'ashokirla'
-        repositoryName: '$(Build.Repository.Name)'
-        action: 'create'
-        target: '$(Build.SourceVersion)'
-        tagSource: 'gitTag'
-        tagPattern: '*'
-        title: 'Test_$(Build.SourceVersion)'
-        changeLogCompareToRelease: 'lastFullRelease'
-        changeLogType: 'commitBased'
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(Pipeline.Workspace)/s'
-        Contents: '**'
-        TarGetFoLDer: '$(System.defaultWorkingDirectory)/temp'
-    - task: PublishPipelineArtifact@0
-      displayName: Pipeline Artifact
-      inputs:
-        artifactName: Artifact1
-        targetPath: '$(System.defaultWorkingDirectory)/temp/ashkirpack.nupkg'
-
-    - upload: $(System.defaultWorkingDirectory)/temp/
-      artifact: Artifact2
-
-
-    - task: PublishBuildArtifacts@1
-      displayName: Create FCS Artifact
-      inputs:
-        artifactName: Artifact3
-        pathToPublish: $(System.defaultWorkingDirectory)/temp/PipelinesCD.yaml
-
-    #  artifact: Extension
-  - job: NoArtifactJob
-    pool: Hosted
-    dependsOn: Build
-    steps:
-      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
-
-  - job: DownloadAllArtifactJob
-    pool: Hosted
-    dependsOn: Build
-    steps:
-      - checkout: none
-      - download: current
-        artifact: Artifact3
-      - powershell: |
-          ls $(Pipeline.Workspace)/
-          ls $(Pipeline.Workspace)/Artifact3
-
-- stage: Deploy
-  displayName: Deploy stage
-  jobs:  
-  - deployment: Deploy1
-    displayName: Download All Artifacts
-    pool: hosted
-    environment: Environment01
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-              - powershell: |
-                  ls $(Pipeline.Workspace)/
-                  ls $(Pipeline.Workspace)/Artifact1/
-                  ls $(Pipeline.Workspace)/Artifact2/
-                  ls $(Pipeline.Workspace)/Artifact3/
-  - deployment: Deploy2
-    displayName: Partial download
-    pool: hosted
-    environment: Environment01
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-              - download: current
-                patterns: '**/*.nupkg'
-                displayName: Nuget download
-              - powershell: |
-                  ls $(Pipeline.Workspace)/
+    - publish: $(Pipeline.Workspace)/
+      artifact: webTier
 
