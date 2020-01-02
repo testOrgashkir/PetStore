@@ -35,6 +35,7 @@ stages:
             - download: current
     - deployment: DBDeployment
       pool: hosted
+      dependsOn: WebDeployment
       environment: SmartHotelProd
       strategy:
        runOnce:
