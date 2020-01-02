@@ -16,13 +16,13 @@ resources:
      trigger: true
 
 stages:
-  # - stage: Build
-  #   jobs:
-  #   - job: Build
-  #     pool: hosted
-  #     steps:
-  #     - publish: $(Pipeline.Workspace)/
-  #       artifact: DBTier
+  - stage: Build
+    jobs:
+    - job: Build
+      pool: hosted
+      steps:
+      - publish: $(Pipeline.Workspace)/
+        artifact: DBTier
   - stage: Deploy
     jobs:
     - deployment: WebDeployment
@@ -32,8 +32,7 @@ stages:
        runOnce:
          deploy:
           steps:
-            - download: SmartHotel
-              artifact: webTier
+            - download: current
     - deployment: DBDeployment
       pool: hosted
       environment: SmartHotelProd
