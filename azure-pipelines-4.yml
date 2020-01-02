@@ -13,10 +13,6 @@ resources:
       branches:
       - master
 
-   - pipeline: SmartKitchen
-     source: SmartKitchen
-     trigger: true
-
 stages:
   - stage: Build
     jobs:
