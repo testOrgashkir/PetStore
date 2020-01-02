@@ -32,7 +32,7 @@ stages:
        runOnce:
          deploy:
           steps:
-            - download: current
+            - download: none
     - deployment: DBDeployment
       pool: hosted
       environment: SmartHotelProd
