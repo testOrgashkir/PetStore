@@ -9,9 +9,7 @@ resources:
  pipelines:
    - pipeline: SmartHotel
      source: SmartHotel-CI
-     trigger:
-      branches:
-      - master
+     trigger: true
     
    - pipeline: SmartKitchen
      source: SmartKitchen
