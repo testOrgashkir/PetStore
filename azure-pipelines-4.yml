@@ -7,9 +7,11 @@ trigger: none
 
 resources:
  pipelines:
-  #  - pipeline: SmartHotel
-  #    source: SmartHotel-CI
-  #    trigger: true
+   - pipeline: SmartHotel
+     source: SmartHotel-CI
+     trigger: 
+      branches:
+      - master
     
    - pipeline: SmartKitchen
      source: SmartKitchen
