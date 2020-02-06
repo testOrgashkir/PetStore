@@ -21,7 +21,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
+    azureSubscription: 'MyARMSubscription'
     appType: 'webApp'
-    WebAppName: MyWebApp
+    WebAppName: 'windowsplktwb'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
