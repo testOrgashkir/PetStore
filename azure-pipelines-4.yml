@@ -12,19 +12,8 @@ resources:
      trigger: 
       branches:
       - master
-    
-   - pipeline: SmartKitchen
-     source: SmartKitchen
-     trigger: true
 
 stages:
-  - stage: Build
-    jobs:
-    - job: Build
-      pool: hosted
-      steps:
-      - publish: $(Pipeline.Workspace)/
-        artifact: DBTier
   - stage: Deploy
     jobs:
     - deployment: WebDeployment
@@ -35,12 +24,3 @@ stages:
          deploy:
           steps:
             - download: current
-    - deployment: DBDeployment
-      pool: hosted
-      dependsOn: WebDeployment
-      environment: SmartHotelProd
-      strategy:
-       runOnce:
-         deploy:
-          steps:
-            - download: SmartKitchen
