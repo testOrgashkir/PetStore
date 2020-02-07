@@ -15,5 +15,5 @@ stages:
     pool: Hosted
     steps:
     - publish: $(Pipeline.Workspace)/
-      artifact: webTier
+      artifact: webTier1
 
