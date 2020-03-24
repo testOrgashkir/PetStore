@@ -18,6 +18,10 @@ stages:
       pool: server
       steps:
         - script: 
+        - task: DownloadPipelineArtifact@2
+          inputs:
+            buildType: 'current'
+            targetPath: '$(Pipeline.Workspace)'
         #- checkout: self
         #- download: SmartHotel
 
