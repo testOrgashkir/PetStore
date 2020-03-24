@@ -17,7 +17,9 @@ stages:
     - job: test1
       pool: server
       steps:
-        - download: SmartHotel
+        - script: 
+        - checkout: self
+        #- download: SmartHotel
 
     - deployment: WebDeployment
       pool: hosted
