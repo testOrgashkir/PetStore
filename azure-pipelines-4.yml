@@ -18,6 +18,7 @@ stages:
       pool: server
       steps:
         - script: 
+        - checkout: self
 
     - deployment: WebDeployment
       pool: hosted
