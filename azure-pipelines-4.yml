@@ -18,7 +18,7 @@ stages:
       pool: server
       steps:
         - script: 
-        - checkout: self
+        #- checkout: self
         #- download: SmartHotel
 
     - deployment: WebDeployment
