@@ -14,6 +14,11 @@ resources:
 stages:
   - stage: Deploy
     jobs:
+    - job: test1
+      pool: server
+      steps:
+        - download: SmartHotel
+        
     - deployment: WebDeployment
       pool: hosted
       environment: SmartHotelProd
