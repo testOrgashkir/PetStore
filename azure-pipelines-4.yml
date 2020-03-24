@@ -17,8 +17,8 @@ stages:
     - job: test1
       pool: server
       steps:
-        - download: SmartHotel
-        
+        - script: 
+
     - deployment: WebDeployment
       pool: hosted
       environment: SmartHotelProd
