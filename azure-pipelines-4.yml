@@ -17,11 +17,12 @@ stages:
     - job: test1
       pool: server
       steps:
-        - script: 
-        - task: DownloadPipelineArtifact@2
+        - task: PowerShell@2
           inputs:
-            buildType: 'current'
-            targetPath: '$(Pipeline.Workspace)'
+            targetType: 'inline'
+            script: |
+              Write-Host resources.pipeline.SmartHotel.runName
+        
         #- checkout: self
         #- download: SmartHotel
 
