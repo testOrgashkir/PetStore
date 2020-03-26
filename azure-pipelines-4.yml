@@ -21,7 +21,7 @@ stages:
           inputs:
             targetType: 'inline'
             script: |
-              Write-Host resources.pipeline.SmartHotel.runName
+              Write-Host $(resources.pipeline.SmartHotel.runName)
         
         #- checkout: self
         #- download: SmartHotel
