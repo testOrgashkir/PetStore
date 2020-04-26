@@ -21,13 +21,13 @@ resources:
 
 stages:
 - stage: Production
-  displayName: Production Canary Deployment
+  displayName: Production 
   jobs: 
-  - deployment: CanaryDeployment
-    displayName: Deploy Canary
+  - deployment: Deployment
+    displayName: Deploy
     pool: 
       vmImage: 'ubuntu-latest'
-    environment: myEnv
+    environment: ashkirEnv
     strategy:
       runOnce:
         deploy:
