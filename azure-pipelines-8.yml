@@ -32,5 +32,6 @@ stages:
       runOnce:
         deploy:
           steps: 
+          - getPackage: somePackage
           - script: echo Hello, world!
             displayName: 'Run a one-line script'
