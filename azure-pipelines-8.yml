@@ -1,0 +1,36 @@
+
+
+trigger: none
+
+resources:
+ pipelines:
+   - pipeline: CIPipeline
+     source: myAppCI
+     trigger: 
+      branches:
+       include:
+         - master
+ packages:
+   - package: somePackage
+     type: Nuget
+     connection: gh-rg
+     name: nugetTest/OctocatApp
+     version: 2.1.12
+     trigger: true
+
+
+stages:
+- stage: Production
+  displayName: Production Canary Deployment
+  jobs: 
+  - deployment: CanaryDeployment
+    displayName: Deploy Canary
+    pool: 
+      vmImage: 'ubuntu-latest'
+    environment: 'azurepipelinescanaryk8s-1930.aca-demo'
+    strategy:
+      runOnce:
+        deploy:
+          steps: 
+          - script: echo Hello, world!
+            displayName: 'Run a one-line script'
