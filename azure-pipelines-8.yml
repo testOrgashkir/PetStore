@@ -15,6 +15,7 @@ resources:
      type: Nuget
      connection: gh-rg
      name: nugetTest/OctocatApp
+     version: 2.1.37
      trigger: true
 
 
