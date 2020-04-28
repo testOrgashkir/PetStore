@@ -5,7 +5,7 @@ trigger: none
 resources:
  pipelines:
    - pipeline: CIPipeline
-     sourc: myAppCI
+     source: myAppCI
      trigger: 
       branches:
        include:
