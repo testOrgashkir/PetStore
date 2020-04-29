@@ -32,6 +32,6 @@ stages:
         deploy:
           steps: 
           - download: none
-          # - getPackage: somePackage
+          - getPackage: somePackage
           - script: echo Hello, world!
             displayName: 'Run a one-line script'
