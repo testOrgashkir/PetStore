@@ -10,12 +10,12 @@ resources:
       branches:
        include:
          - master
-#  packages:
-#    - package: somePackage
-#      type: Nuget
-#      connection: gh-rg
-#      name: nugetTest/OctocatApp
-#      trigger: true
+ packages:
+   - package: somePackage
+     type: Nuget
+     connection: gh-rg
+     name: nugetTest/OctocatApp
+     trigger: true
 
 
 stages:
