@@ -14,6 +14,13 @@ resources:
    - pipeline: UBSPipeline
      source: UBSDemo
      trigger: true
+ builds:
+   - build: Jenkins
+     type: Jenkins
+     connection: JenkinsBuild
+     source: rgoyal
+     trigger: true
+
  packages:
    - package: somePackage
      type: Nuget
