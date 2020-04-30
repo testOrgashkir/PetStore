@@ -15,7 +15,7 @@ resources:
      source: UBSDemo
      trigger: true
  builds:
-   - build: Jenkins
+   - build: Jenkins1
      type: Jenkins
      connection: JenkinsBuild
      source: rogoyal
@@ -42,7 +42,7 @@ stages:
       runOnce:
         deploy:
           steps: 
-          - downloadBuild: Jenkins
+          - downloadBuild: Jenkins1
           # - getPackage: somePackage
           - script: echo Hello, world!
             displayName: 'Run a one-line script'
