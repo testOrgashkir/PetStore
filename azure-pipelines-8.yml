@@ -10,6 +10,10 @@ resources:
       branches:
        include:
          - master
+
+   - pipeline: UBSPipeline
+     source: UBSDemo
+     trigger: true
  packages:
    - package: somePackage
      type: Nuget
