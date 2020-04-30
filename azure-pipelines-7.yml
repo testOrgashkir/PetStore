@@ -21,7 +21,7 @@ steps:
       
       Write-Host "Hello World"
       
-      Sleep 50
+      sleep 50
 
 - publish: $(Pipeline.Workspace)
   artifact: myApp
