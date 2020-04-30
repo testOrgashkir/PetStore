@@ -18,7 +18,7 @@ resources:
    - build: Jenkins
      type: Jenkins
      connection: JenkinsBuild
-     source: rgoyal
+     source: rogoyal
      trigger: true
 
  packages:
