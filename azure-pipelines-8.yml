@@ -43,7 +43,7 @@ stages:
       runOnce:
         deploy:
           steps: 
-          - downloadBuild: Jenkins1
+          # - downloadBuild: Jenkins1
           # - getPackage: somePackage
           - script: echo Hello, world!
             displayName: 'Run a one-line script'
