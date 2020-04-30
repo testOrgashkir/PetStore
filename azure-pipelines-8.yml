@@ -14,19 +14,20 @@ resources:
    - pipeline: UBSPipeline
      source: UBSDemo
      trigger: true
- builds:
-   - build: Jenkins1
-     type: Jenkins
-     connection: JenkinsBuild
-     source: rogoyal
-     trigger: true
 
- packages:
-   - package: somePackage
-     type: Nuget
-     connection: gh-rg
-     name: nugetTest/OctocatApp
-     trigger: true
+#  builds:
+#    - build: Jenkins1
+#      type: Jenkins
+#      connection: JenkinsBuild
+#      source: rogoyal
+#      trigger: true
+
+#  packages:
+#    - package: somePackage
+#      type: Nuget
+#      connection: gh-rg
+#      name: nugetTest/OctocatApp
+#      trigger: true
 
 
 stages:
