@@ -12,7 +12,8 @@ pipeline {
           steps {
             build 'dummy'
             sleep 10
-            powershell 'Start-Sleep -s 100'
+            releases/M145
+            powershell 'Start-Sleep -s 1000
           }
         }
       }
