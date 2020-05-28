@@ -1,0 +1,61 @@
+
+resources:
+  builds:
+  - build: Spaceworkz
+    type: Jenkins
+    connection: MyJenkinsServer 
+    source: SpaceworkzProj  
+    
+  - build: WebApp
+    type: CircleCI
+    connection: MyCircleCIConn
+    source: WebApp.CI
+
+- job: WebDeployment
+  steps:
+  - downloadBuild: Spaceworkz  
+    name: WebTier1 
+    patterns: '**/*.zip' 
+    
+    
+    
+resources:
+  builds:
+  - jenkins: Spaceworkz
+    connection: MyJenkinsServer 
+    source: SpaceworkzProj  
+    
+  - circleCI: WebApp
+    connection: MyCircleCIConn
+    source: WebApp.CI
+
+- job: WebDeployment
+  steps:
+  - downloadBuild: WebApp  
+    name: WebTier2 
+    patterns: '**/*.zip' 
+    
+    
+resources:
+  jenkins:
+  - name: Spaceworkz
+    connection: MyJenkinsServer 
+    source: SpaceworkzProj  
+    
+  circleCI: 
+  - name: WebApp
+    connection: MyCircleCIConn
+    source: WebApp.CI
+
+- job: WebDeployment
+  steps:
+  - downloadJenkins: SpaceWorkz  
+    name: WebTier1 
+    patterns: '**/*.zip' 
+    
+  - downloadCircleCI: WebApp
+  
+    
+    
+    
+    
