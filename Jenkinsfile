@@ -12,7 +12,7 @@ pipeline {
           steps {
             build 'dummy'
             sleep 10
-            powershell 'Start-Sleep -s 10'
+            powershell 'Start-Sleep -s 100'
           }
         }
       }
