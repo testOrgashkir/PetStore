@@ -5,12 +5,6 @@
 
 trigger: none
 
-resources:
- pipelines:
-   - pipeline: SmartHotel
-     source: SmartHotel-CI
-     trigger: true
-
 stages:
   - stage: Deploy
     jobs:
