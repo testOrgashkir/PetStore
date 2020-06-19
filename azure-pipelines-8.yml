@@ -1,0 +1,49 @@
+
+
+trigger: none
+
+resources:
+ pipelines:
+   - pipeline: CIPipeline
+     source: myApp CI
+     trigger: 
+      branches:
+       include:
+         - master
+
+   - pipeline: UBSPipeline
+     source: UBSDemo
+     trigger: true
+
+#  builds:
+#    - build: Jenkins1
+#      type: Jenkins
+#      connection: JenkinsBuild
+#      source: rogoyal
+#      trigger: true
+
+#  packages:
+#    - package: somePackage
+#      type: Nuget
+#      connection: gh-rg
+#      name: nugetTest/OctocatApp
+#      trigger: true
+
+
+stages:
+- stage: Production
+  displayName: Production 
+  jobs: 
+  - deployment: Deployment
+    displayName: Deploy
+    pool: 
+      vmImage: 'ubuntu-latest'
+    environment: ashkirEnv
+    strategy:
+      runOnce:
+        deploy:
+          steps: 
+          # - downloadBuild: Jenkins1
+          # - getPackage: somePackage
+          - script: echo Hello, world!
+            displayName: 'Run a one-line script'
