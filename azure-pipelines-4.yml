@@ -6,15 +6,20 @@
 trigger: none
 
 stages:
-  - stage: Build
-    jobs:
-    - job: Build
-      pool: hosted
-      steps:
-      - publish: $(Pipeline.Workspace)/
-        artifact: DBTier
   - stage: Deploy
     jobs:
+    - job: test1
+      pool: server
+      steps:
+        - task: PowerShell@2
+          inputs:
+            targetType: 'inline'
+            script: |
+              Write-Host $(resources.pipeline.SmartHotel.runName)
+        
+        #- checkout: self
+        #- download: SmartHotel
+
     - deployment: WebDeployment
       pool: hosted
       environment: SmartHotelProd
