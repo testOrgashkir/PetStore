@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-            build 'freestyle123'
+            build 'freestyle1234'
           }
         }
         stage('QA') {
