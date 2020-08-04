@@ -5,7 +5,7 @@ resources:
     type: Jenkins
     connection: MyJenkinsServer 
     source: SpaceworkzProj  
-    
+ #testing123   
   - build: WebApp
     type: CircleCI
     connection: MyCircleCIConn
