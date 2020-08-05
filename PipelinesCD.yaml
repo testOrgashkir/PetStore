@@ -54,8 +54,4 @@ resources:
     patterns: '**/*.zip' 
     
   - downloadCircleCI: WebApp
-  
-    
-    
-    
     
