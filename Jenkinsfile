@@ -10,7 +10,7 @@ pipeline {
         }
         stage('QA') {
           steps {
-            build 'dummy'
+            build 'dummy 240'
             sleep 10
             releases/M145
             powershell 'Start-Sleep -s 1000
